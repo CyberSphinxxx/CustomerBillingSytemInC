@@ -8,7 +8,7 @@ struct Database {
 };
 
 int main() {
-    struct Database customers[100];
+    struct Database customers[50];
     int totalCustomers = 0;
 
     int choice;
@@ -37,10 +37,6 @@ int main() {
 
         customers[totalCustomers].balance = 0;
         totalCustomers++;
-        }
-        
-        else {
-            printf("Maximum number of customers reached.\n");
         }
     }
 
