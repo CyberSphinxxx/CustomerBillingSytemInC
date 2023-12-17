@@ -1,4 +1,4 @@
-# CustomerBillingSytemInC
+# Customer Billing Sytem In C Programming
 A simple customer billing system using C programming language
 
 This is a Performance Innovative Task (Final)
