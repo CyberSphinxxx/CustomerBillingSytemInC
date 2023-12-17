@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Database {
+    char name[50];
+    char number[50];
+    int balance;
+};
+
+int main() {
+    struct Database customers[100];
+    int totalCustomers = 0;
+
+    int choice;
+
+    while (1) {
+    printf("\n-----------------------------------\n");
+    printf("Welcome to Customer Billing System!\n\n");
+    printf("1.\tAdd Account\n");
+    printf("2.\tSearch Account by Name\n");
+    printf("3.\tSearch Account by Number\n");
+    printf("4.\tExit\n");
+    printf("\n-----------------------------------\n");
+
+    printf("Enter Choice: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+    if (totalCustomers < 100) {
+        printf("Enter Account Name: ");
+        scanf("%s", customers[totalCustomers].name);
+        printf("Account Named %s added!\n", customers[totalCustomers].name);
+
+        printf("\nEnter Account Number: ");
+        scanf("%s", customers[totalCustomers].number);
+        printf("Account Name \"%s\" with the account Number \"%s\" added!\n", customers[totalCustomers].name, customers[totalCustomers].number);
+
+        customers[totalCustomers].balance = 0;
+        totalCustomers++;
+        }
+        
+        else {
+            printf("Maximum number of customers reached.\n");
+        }
+    }
+
+    else if (choice == 2 || choice == 3) {
+    char searchValue[50];
+    printf("Enter %s: ", (choice == 2) ? "Account name" : "Account Number");
+    scanf("%s", searchValue);
+
+    int found = 0;
+    for (int i = 0; i < totalCustomers; i++) {
+        if ((choice == 2 && strcmp(customers[i].name, searchValue) == 0) ||
+            (choice == 3 && strcmp(customers[i].number, searchValue) == 0)) {
+
+        printf("\n-----------------------------------\n");
+        printf("Welcome %s!\n", customers[i].name);
+        printf("What do you want to do?\n");
+        printf("1.\tCheck Balance\n");
+        printf("2.\tAdd Balance\n");
+        printf("3.\tWithdraw Money\n");
+        printf("4.\tExit\n");
+        printf("\n-----------------------------------\n");
+
+        int customerChoice;
+        while (1) {
+        printf("\nEnter Your Choice: ");
+        scanf("%d", &customerChoice);
+
+            if (customerChoice == 1) {
+                printf("Your balance is: %d\n", customers[i].balance);
+            }
+            else if (customerChoice == 2) {
+                int amountToAdd;
+                printf("Enter Amount to add: ");
+                scanf("%d", &amountToAdd);
+                customers[i].balance += amountToAdd;
+                printf("Your balance is: %d\n", customers[i].balance);
+            }
+            
+            else if (customerChoice == 3) {
+                int amountToWithdraw;
+                printf("Enter Amount to Withdraw: ");
+                scanf("%d", &amountToWithdraw);
+
+                if (customers[i].balance - amountToWithdraw < -1) {
+                    printf("Insufficient Balance!\n");
+                } else {
+                    customers[i].balance -= amountToWithdraw;
+                    printf("Your balance is: %d\n", customers[i].balance);
+                }
+            }
+
+            else if (customerChoice == 4) {
+                printf("Goodbye %s!\n", customers[i].name);
+                break;
+            }
+        }
+            found = 1;
+            break;
+    }
+}
+            if (!found) {
+                printf("There's no Customer with %s %s\n", (choice == 2) ? "name" : "Account Number", searchValue);
+            }
+        }
+
+        else if (choice == 4) {
+            break;
+        }
+
+        else {
+            printf("Invalid Choice!\n");
+        }
+    }
+    printf("GoodBye!\n");
+    return 0;
+}
