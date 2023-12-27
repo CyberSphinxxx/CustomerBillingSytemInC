@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
+void interface(){
+    printf("\n-----------------------------------\n");
+    printf("Welcome to Customer Billing System!\n\n");
+    printf("1.\tAdd Account\n");
+    printf("2.\tSearch Account by Name\n");
+    printf("3.\tSearch Account by Number\n");
+    printf("4.\tExit\n");
+    printf("\n-----------------------------------\n");
+}
+
 struct Database {
     char name[50];
     char number[50];
@@ -14,13 +24,7 @@ int main() {
     int choice;
 
     while (1) {
-    printf("\n-----------------------------------\n");
-    printf("Welcome to Customer Billing System!\n\n");
-    printf("1.\tAdd Account\n");
-    printf("2.\tSearch Account by Name\n");
-    printf("3.\tSearch Account by Number\n");
-    printf("4.\tExit\n");
-    printf("\n-----------------------------------\n");
+    interface();
 
     printf("Enter Choice: ");
     scanf("%d", &choice);
@@ -34,15 +38,23 @@ int main() {
         printf("\nEnter Account Number: ");
         scanf("%s", customers[totalCustomers].number);
         printf("Account Name \"%s\" with the account Number \"%s\" added!\n", customers[totalCustomers].name, customers[totalCustomers].number);
-
+        
         customers[totalCustomers].balance = 0;
         totalCustomers++;
-        }
+       } 
     }
 
     else if (choice == 2 || choice == 3) {
     char searchValue[50];
-    printf("Enter %s: ", (choice == 2) ? "Account name" : "Account Number");
+
+    if (choice == 2) {
+        printf("Enter Account name: "); 
+    }
+
+    else {
+        printf("Enter Account Number: ");
+    }
+
     scanf("%s", searchValue);
 
     int found = 0;
@@ -54,8 +66,8 @@ int main() {
         printf("Welcome %s!\n", customers[i].name);
         printf("What do you want to do?\n");
         printf("1.\tCheck Balance\n");
-        printf("2.\tAdd Balance\n");
-        printf("3.\tWithdraw Money\n");
+        printf("2.\tAdd Due Amount\n");
+        printf("3.\tPay Due Amount\n");
         printf("4.\tExit\n");
         printf("\n-----------------------------------\n");
 
@@ -67,24 +79,27 @@ int main() {
             if (customerChoice == 1) {
                 printf("Your balance is: %d\n", customers[i].balance);
             }
+
             else if (customerChoice == 2) {
                 int amountToAdd;
                 printf("Enter Amount to add: ");
                 scanf("%d", &amountToAdd);
                 customers[i].balance += amountToAdd;
-                printf("Your balance is: %d\n", customers[i].balance);
+                printf("Your balance is:-%d\n", customers[i].balance);
             }
             
             else if (customerChoice == 3) {
                 int amountToWithdraw;
-                printf("Enter Amount to Withdraw: ");
+                printf("Enter Amount to Pay: ");
                 scanf("%d", &amountToWithdraw);
 
                 if (customers[i].balance - amountToWithdraw < -1) {
                     printf("Insufficient Balance!\n");
-                } else {
+                }
+                
+                else {
                     customers[i].balance -= amountToWithdraw;
-                    printf("Your balance is: %d\n", customers[i].balance);
+                    printf("Your balance is:-%d\n", customers[i].balance);
                 }
             }
 
@@ -94,14 +109,20 @@ int main() {
             }
         }
             found = 1;
-            break;
+            break;    
+        }
     }
-}
+    
             if (!found) {
-                printf("There's no Customer with %s %s\n", (choice == 2) ? "name" : "Account Number", searchValue);
+                if (choice == 2) {
+                    printf("There's no Customer with name %s\n", searchValue);
+                }
+
+                else{
+                    printf("There's no Customer with Account Number %s\n", searchValue);
+                }
             }
         }
-
         else if (choice == 4) {
             break;
         }
