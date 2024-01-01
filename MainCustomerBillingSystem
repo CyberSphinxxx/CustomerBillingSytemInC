@@ -1,21 +1,30 @@
 #include <stdio.h>
 #include <string.h>
 
-void interface() {
-    printf("\n\t\t----------------------------------------\n");
-    printf("\t\tWelcome to Customer Billing System!\n\n");
-    printf("\t\t1.\tAdd Account\n");
-    printf("\t\t2.\tSearch Account by Name\n");
-    printf("\t\t3.\tSearch Account by Number\n");
-    printf("\t\t4.\tExit\n");
-    printf("\n\t\t----------------------------------------\n");
-}
-
 struct Database {
     char name[50];
     char number[50];
     int balance;
 };
+
+void separator(){
+     printf("\t\t========================================\n");
+}
+
+void NewLine(){
+    printf("\n");
+}
+
+void interface() {
+    printf("\n\t\t========================================\n");
+    printf("\t\tWelcome to Customer Billing System!");
+    printf("\n\t\t========================================\n");
+    printf("\t\t1.\tAdd Account\n");
+    printf("\t\t2.\tSearch Account by Name\n");
+    printf("\t\t3.\tSearch Account by Number\n");
+    printf("\t\t4.\tExit");
+    printf("\n\t\t========================================\n");
+}
 
 int checkDuplicate(struct Database customers[], int totalCustomers, char name[], char number[]) {
     int i;
@@ -33,38 +42,47 @@ int main() {
     int choice;
 
     while (1) {
-        interface();
-        printf("\t\tEnter Choice: ");
-        scanf("%d", &choice);
+    interface();
+    
+    printf("\t\tEnter Choice: ");
+    scanf("%d", &choice);
 
-        if (choice == 1) {
-        if (totalCustomers < 100) {
-            char tempName[50];
-            char tempNumber[50];
+    if (choice == 1) {
+    if (totalCustomers < 100) {
 
-            printf("\t\tEnter Account Name: ");
-            scanf("%s", tempName);
+        char tempName[50];
+        char tempNumber[50];
 
-            printf("\n\t\tEnter Account Number: ");
-            scanf("%s", tempNumber);
+        separator();
+        printf("\t\tEnter Account Name: ");
+        scanf("%s", tempName);
 
-            if (checkDuplicate(customers, totalCustomers, tempName, tempNumber)) {
-                printf("\t\tAccount with this name or number already exists!\n");
-            }
-            
-            else {
-                strcpy(customers[totalCustomers].name, tempName);
-                strcpy(customers[totalCustomers].number, tempNumber);
-                printf("\t\tAccount Name \"%s\" with the account Number \"%s\" has been added!\n", customers[totalCustomers].name, customers[totalCustomers].number);
+        printf("\t\tEnter Account Number: ");
+        scanf("%s", tempNumber);
 
-                customers[totalCustomers].balance = 0;
-                totalCustomers++;
-            }
+        if (checkDuplicate(customers, totalCustomers, tempName, tempNumber)) {
+            separator();
+            printf("\t\tAccount with this name or number already exists!\n");
+            printf("\t\tPlease create a different account!\n");
+            separator();
+
+        }
+        
+        else {
+            strcpy(customers[totalCustomers].name, tempName);
+            strcpy(customers[totalCustomers].number, tempNumber);
+            separator();
+            printf("\t\tAccount Name \"%s\" with the\n\t\tAccount Number \"%s\" has been added!",
+            customers[totalCustomers].name, customers[totalCustomers].number);
+
+            customers[totalCustomers].balance = 0;
+            totalCustomers++;
         }
     }
+}
         
     else if (choice == 2 || choice == 3) {
-        char searchValue[50];
+    char searchValue[50];
 
         if (choice == 2) {
             printf("\t\tEnter Account name: ");
@@ -82,75 +100,83 @@ int main() {
     for (i = 0; i < totalCustomers; i++) {
     if ((choice == 2 && strcmp(customers[i].name, searchValue) == 0) ||
         (choice == 3 && strcmp(customers[i].number, searchValue) == 0)) {
-
-        printf("\n\t\t----------------------------------------\n");
+        separator();
         printf("\t\tWelcome %s!\n", customers[i].name);
 
         int customerChoice;
         do {
-        printf("\t\t----------------------------------------\n");
+        separator();
         printf("\t\tWhat do you want to do?\n");
         printf("\t\t1.\tCheck Balance\n");
-        printf("\t\t2.\tDeposit Money\n");
-        printf("\t\t3.\tWithdraw Money\n");
-        printf("\t\t4.\tAdd Due Amount\n");
+        printf("\t\t2.\tAdd Due Amount\n");
+        printf("\t\t3.\tDeposit Money\n");
+        printf("\t\t4.\tWithdraw Money\n");
         printf("\t\t5.\tExit\n");
-        printf("\n\t\t----------------------------------------\n");
+        separator();
 
-        printf("\n\t\tEnter Your Choice: ");
+        printf("\t\tEnter Your Choice: ");
         scanf("%d", &customerChoice);
 
         switch (customerChoice) {
             case 1:
+                separator();
                 printf("\t\tYour balance is: Php %d\n", customers[i].balance);
-                printf("\n");
                 break;
 
             case 2:
-                printf("\t\tEnter Amount to deposit: ");
+                separator();
+                int amountToAdd;
+                printf("\t\tEnter Due Amount: ");
+                scanf("%d", &amountToAdd);
 
+                customers[i].balance -= amountToAdd;
+                printf("\t\tYou Added Php%d As Due Amount!\n", amountToAdd);
+                printf("\t\tYour Balance is: Php %d!\n", customers[i].balance);
+                break;
+
+            case 3:
+                separator();
+                printf("\t\tEnter Amount to deposit: ");
+                
                 int depAmount;
                 scanf("%d", &depAmount);
 
                 customers[i].balance += depAmount;
-                printf("\n");
-                printf("\t\tYou Added %d To Your Account\n",depAmount);
-                printf("\t\tYour balance is now: %d\n", customers[i].balance);
+                separator();
+                printf("\t\tYou Added Php%d To Your Account!\n",depAmount);
+                printf("\t\tYour balance is now: Php%d!\n", customers[i].balance);
                 break;
 
-            case 3:
+            case 4:
+                separator();
                 printf("\t\tEnter Amount to Withdraw: ");
 
                 int withDraw = 0;
                 scanf("%d", &withDraw);
 
                 if (withDraw > customers[i].balance) {
-                    printf("\t\tInsufficient Balance!");
+                    separator();
+                    printf("\t\tInsufficient Balance!\n");
+                    printf("\t\tYou Only Have Php%d In Your Account!\n",customers[i].balance);
                 }
                 
                 else {
                     customers[i].balance -= withDraw;
-                    printf("\n");
-                    printf("\t\tYou Withdrawed %d From Your Account\n",withDraw);
-                    printf("\t\tYour new balance is: %d\n", customers[i].balance);
+                    separator();
+                    printf("\t\tYou Withdrawed Php%d From Your Account!\n",withDraw);
+                    printf("\t\tYour New Balance Is: Php%d!\n", customers[i].balance);
                 }
                 break;
 
-            case 4:
-                int amountToAdd;
-                printf("\t\tEnter Due Amount: ");
-                scanf("%d", &amountToAdd);
-
-                customers[i].balance -= amountToAdd;
-                printf("\t\tYour Balance is: Php %d\n", customers[i].balance);
-                break;
-
             case 5:
-                printf("\n\t\t----------Goodbye %s!----------\n", customers[i].name);
+                separator();
+                printf("\t\tGoodbye %s!", customers[i].name);
                 break;
 
             default:
-                printf("Invalid Choice");
+                separator();
+                printf("\t\tInvalid Choice!\n");
+                printf("\t\tPlease Select From 1-5\n");
                 break;
         }
     }
@@ -177,10 +203,11 @@ int main() {
         }
         
         else {
-            printf("\t\tInvalid Choice!\n");
+            printf("\t\tInvalid Choice!");
         }
     }
-
-    printf("\n\t\t----------GoodBye!----------\n");
+    separator();
+    printf("\t\tGoodBye!, See You Next Time :)\n");
+    separator();
     return 0;
 }
