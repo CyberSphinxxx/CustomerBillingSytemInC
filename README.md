@@ -11,7 +11,7 @@ in Computer Programming 1 Subject in USTP
 5. If you have nothing to do with the program, you can directly exit from the main menu.
 
 You can find the flowchart of this code here:
-https://lucid.app/lucidchart/3025e9b2-ba75-446a-8b21-7dc8e6414ac6/edit?viewport_loc=-331%2C138%2C6681%2C3488%2C0_0&invitationId=inv_fdd24ef7-9fc4-459b-be1e-cd26f2a78d83
+https://lucid.app/lucidchart/f75b3ffb-a604-43fd-ac39-46eb5b1a831c/edit?invitationId=inv_7573380d-ff95-46cf-9f09-590a0455a35b
 
 Additional Contributors:
 -Rhoydel Jr. M. Elan
