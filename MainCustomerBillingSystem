@@ -92,7 +92,7 @@ int main() {
             strcpy(customers[totalCustomers].name, tempName);
             strcpy(customers[totalCustomers].number, tempNumber);
             separator();
-            printf("\t\tAccount Name \"%s\" with the\n\t\tAccount Number \"%s\" has been added!",
+            printf("\t\tAccount Name \"%s\" with the\n\t\tAccount ID \"%s\" has been added!",
             customers[totalCustomers].name, customers[totalCustomers].number);
 
             customers[totalCustomers].balance = 0;
@@ -109,7 +109,7 @@ int main() {
         }
         
         else {
-            printf("\t\tEnter Account Number: ");
+            printf("\t\tEnter Account ID: ");
         }
 
     scanf("%s", searchValue);
@@ -213,7 +213,7 @@ int main() {
             }
             
             else {
-                printf("\t\tThere's no Customer with Account Number %s\n", searchValue);
+                printf("\t\tThere's no Customer with Account ID %s\n", searchValue);
             }
         }
     }
