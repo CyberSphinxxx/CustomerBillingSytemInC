@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+     
 struct Database {
     char name[50];
     char number[50];
@@ -22,7 +22,8 @@ void interface() {
     printf("\t\t1.\tAdd Account\n");
     printf("\t\t2.\tSearch Account by Name\n");
     printf("\t\t3.\tSearch Account by Number\n");
-    printf("\t\t4.\tExit");
+    printf("\t\t4.\tDisplay All Customers\n");
+    printf("\t\t5.\tExit");
     printf("\n\t\t========================================\n");
 }
 
@@ -34,6 +35,17 @@ int checkDuplicate(struct Database customers[], int totalCustomers, char name[],
         }
     }
     return 0;
+}
+
+void displayAllCustomers(struct Database customers[], int totalCustomers) {
+    separator();
+    printf("\t\tDisplaying All Customers:\n");
+    separator();
+    for (int i = 0; i < totalCustomers; i++) {
+        printf("\t\tName: %s,\n\t\tAccount Number: %s,\n\t\tBalance: Php %d\n", customers[i].name, customers[i].number, customers[i].balance);
+        separator();
+    }
+    separator();
 }
 
 int main() {
@@ -197,8 +209,12 @@ int main() {
             }
         }
     }
-        
+
         else if (choice == 4) {
+        displayAllCustomers(customers, totalCustomers);
+        }
+        
+        else if (choice == 5) {
             break;
         }
         
