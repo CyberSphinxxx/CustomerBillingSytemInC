@@ -20,8 +20,8 @@ void interface() {
     printf("\t\tWelcome to Customer Billing System!");
     printf("\n\t\t========================================\n");
     printf("\t\t1.\tAdd Account\n");
-    printf("\t\t2.\tSearch Account by Name\n");
-    printf("\t\t3.\tSearch Account by Number\n");
+    printf("\t\t2.\tSearch Account by Username\n");
+    printf("\t\t3.\tSearch Account by ID\n");
     printf("\t\t4.\tDisplay All Customers\n");
     printf("\t\t5.\tExit");
     printf("\n\t\t========================================\n");
@@ -42,7 +42,8 @@ void displayAllCustomers(struct Database customers[], int totalCustomers) {
     printf("\t\tDisplaying All Customers:\n");
     separator();
     for (int i = 0; i < totalCustomers; i++) {
-        printf("\t\tName: %s,\n\t\tAccount Number: %s,\n\t\tBalance: Php %d\n", customers[i].name, customers[i].number, customers[i].balance);
+        printf("\t\tName: %s\n\t\tAccount Number: %s\n\t\tBalance: Php %d\n",
+        customers[i].name, customers[i].number, customers[i].balance);
         separator();
     }
     separator();
