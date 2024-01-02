@@ -57,7 +57,13 @@ int main() {
     interface();
     
     printf("\t\tEnter Choice: ");
-    scanf("%d", &choice);
+    int result = scanf("%d", &choice);
+
+    if (result != 1) {
+            while (getchar() != '\n');
+            printf("\t\tInvalid input. Please enter a number.\n");
+            continue;
+        }
 
     if (choice == 1) {
     if (totalCustomers < 100) {
@@ -66,10 +72,10 @@ int main() {
         char tempNumber[50];
 
         separator();
-        printf("\t\tEnter Account Name: ");
+        printf("\t\tEnter Account Username: ");
         scanf("%s", tempName);
 
-        printf("\t\tEnter Account Number: ");
+        printf("\t\tEnter Account ID: ");
         scanf("%s", tempNumber);
 
         if (checkDuplicate(customers, totalCustomers, tempName, tempNumber)) {
