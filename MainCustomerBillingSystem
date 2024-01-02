@@ -41,7 +41,8 @@ void displayAllCustomers(struct Database customers[], int totalCustomers) {
     separator();
     printf("\t\tDisplaying All Customers:\n");
     separator();
-    for (int i = 0; i < totalCustomers; i++) {
+    int i; 
+    for (i = 0; i < totalCustomers; i++) {
         printf("\t\tName: %s\n\t\tAccount Number: %s\n\t\tBalance: Php %d\n",
         customers[i].name, customers[i].number, customers[i].balance);
         separator();
