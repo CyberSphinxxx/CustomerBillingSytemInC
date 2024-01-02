@@ -82,7 +82,7 @@ int main() {
 
         if (checkDuplicate(customers, totalCustomers, tempName, tempNumber)) {
             separator();
-            printf("\t\tAccount with this name or number already exists!\n");
+            printf("\t\tAccount with this name or ID already exists!\n");
             printf("\t\tPlease create a different account!\n");
             separator();
 
