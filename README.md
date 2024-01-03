@@ -14,6 +14,10 @@ You can find the flowchart of this code here:
 
 https://lucid.app/lucidchart/f75b3ffb-a604-43fd-ac39-46eb5b1a831c/edit?view_items=TOy1qj8sb.ID&invitationId=inv_7573380d-ff95-46cf-9f09-590a0455a35b
 
+You can find the code screenshots here:
+
+https://drive.google.com/drive/folders/1H8fX7EoceVTDgLQRm5BHWjdM6c6nKi48
+
 Additional Contributors:
 
 -Rhoydel Jr. M. Elan
