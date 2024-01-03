@@ -41,6 +41,7 @@ void displayAllCustomers(struct Database customers[], int totalCustomers) {
     separator();
     printf("\t\tDisplaying All Customers:\n");
     separator();
+
     int i;
     for (i = 0; i < totalCustomers; i++) {
         printf("\t\tName: %s\n\t\tAccount ID: %s\n\t\tBalance: Php %d\n",
@@ -200,6 +201,7 @@ int main() {
                 break;
         }
     }
+
         while (customerChoice != 5);
 
         found = 1;
