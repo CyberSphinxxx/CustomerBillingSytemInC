@@ -93,7 +93,7 @@ int main() {
             strcpy(customers[totalCustomers].name, tempName);
             strcpy(customers[totalCustomers].number, tempNumber);
             separator();
-            printf("\t\tAccount Name \"%s\" with the\n\t\tAccount ID \"%s\" has been added!",
+            printf("\t\tAccount Username \"%s\" with the\n\t\tAccount ID \"%s\" has been added!",
             customers[totalCustomers].name, customers[totalCustomers].number);
 
             customers[totalCustomers].balance = 0;
