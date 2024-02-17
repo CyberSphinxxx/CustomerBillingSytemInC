@@ -26,3 +26,33 @@ Additional Contributors:
 
 Message me for more Inquiries:
 https://www.facebook.com/johnlemgonzales
+
+# Customer Billing System
+
+---------------------------------------------------
+**Customer Billing System Program Description:**
+
+This C program simulates a customer billing system where users can add accounts, search for accounts by username or ID, display all customers, and perform operations such as checking balance, adding due amount, depositing money, and withdrawing money.
+
+---------------------------------------------------
+**User Interface:**
+
+The program presents a user-friendly interface with options to add an account, search for accounts, display all customers, or exit the program.
+
+---------------------------------------------------
+**Data Structure:**
+
+The program uses a structure `Database` to store customer data including name, ID, and balance.
+
+---------------------------------------------------
+**Functionality:**
+
+- **Add Account:** Users can add accounts by entering the username and ID. Duplicate entries are checked to ensure uniqueness.
+- **Search Account:** Users can search for accounts either by username or ID. Upon successful search, users can perform various operations like checking balance, adding due amount, depositing money, or withdrawing money.
+- **Display All Customers:** Users can view details of all customers including name, ID, and balance.
+- **Exit:** Users can exit the program at any time.
+
+---------------------------------------------------
+**Usage:**
+
+Compile and execute the program in a C environment. Follow the prompts to navigate through the menu and perform desired operations. The program provides a comprehensive billing system for managing customer accounts.
